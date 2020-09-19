@@ -18,31 +18,12 @@ window.onload = function() {
     stats.showPanel(0);
     document.body.appendChild(stats.dom);
 
-    // Canvas methods hashing:
-    // This loop creates tiny shortcuts for all the webgl context's methods/constants we need:
-    // createProgram => cP
-    // shaderSource => sS
-    // createShader => cS
-    // compileShader => ce
-    // attachShader => aS
-    // linkProgram => lo
-    // useProgram => ug
-    // bindBuffer => bf
-    // createBuffer => cB
-    // enableVertexAttribArray => eV
-    // vertexAttribPointer => vA
-    // bufferData => bD
-    // getUniformLocation => gf
-    // drawArrays => dr
-    // NO_ERROR => NO (value = 0)
-    // FRAGMENT_SHADER => FN (value: 35632)
-    // ELEMENT_ARRAY_BUFFER_BINDING => ET (value: 34965)
-    // We need to redefine the webgl context because adding the textarea in the DOM rewrote the canvas "a".
     for (i in gl) {
         gl[i[0] + i[6]] = gl[i];
     };
+
     // we use only one uniofrom
-    gl.u = gl.uniform1f;
+    gl.uniform = gl.uniform1f;
     // x,y: cords
     vx = 0;
     vy = 0;
@@ -51,31 +32,23 @@ window.onload = function() {
     x = Math.random() * 1000000;
     y = Math.random() * 1000000;
     // Use the gl context's scope for all the following code
-    with(gl) {
-        // Define a new program
-        // p=createProgram();
-        p = cP();
-        // Basic vertex shader
-        // shaderSource(s=createShader(VERTEX_SHADER),"attribute vec2 p;void main(){gl_Position=vec4(p,0,1);}");
-        sS(
-            s = cS(VERTEX_SHADER),
-            `
+    // Define a new program
+    var p = gl.createProgram();
+    // Basic vertex shader
+    gl.shaderSource(s = gl.createShader(gl.VERTEX_SHADER),
+        `
         attribute vec2 p;
         void main() {
             gl_Position=vec4(p, 1, 1);
         }
         `
-        );
-        // Compile and attach it to the program
-        // compileShader(s);
-        ce(s);
-        //attachShader(p,s);
-        aS(p, s);
-        // Main program
-        // shaderSource(s=createShader(FRAGMENT_SHADER),'...');
-        sS(
-            s = cS(FRAGMENT_SHADER),
-            `
+    );
+    // Compile and attach it to the program
+    gl.compileShader(s);
+    gl.attachShader(p, s);
+    // Main program
+    gl.shaderSource(s = gl.createShader(gl.FRAGMENT_SHADER),
+        `
         precision mediump float;
         uniform float vx, vy, x, y;
         void main() {
@@ -110,51 +83,43 @@ window.onload = function() {
             gl_FragColor = vec4(i * .01, 1.);
         }
         `
-        );
-        // Compile and attach it to the program
-        // compileShader(s);
-        ce(s);
-        // DEBUGS
-        if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) {
-            gl.getShaderInfoLog(s).trim().split("\n").forEach(ss =>
-                console.warn("[shader] " + ss))
-            throw new Error("Error while compiling shader")
-        };
-        // attachShader(p,s);
-        aS(p, s);
-        // Link and start the program
-        //linkProgram(P);
-        lo(p);
-        //useProgram(p);
-        ug(p);
-        // Define a big triangle the canvas, containing the viewport
-        // bindBuffer(g=ARRAY_BUFFER, createBuffer());
-        bf(g = ARRAY_BUFFER, cB());
-        // enableVertexAttribArray(0);
-        eV(0);
-        // vertexAttribPointer(0, 2, BYTE, 0, 0, 0);
-        vA(0, 2, BYTE, 0, 0, 0);
-        // bufferData(g,new Int8Array([-3, 1, 1, -3, 1, 1]), STATIC_DRAW);
-        bD(g, new Int8Array([-3, 1, 1, -3, 1, 1]), STATIC_DRAW);
-        // Main loop
-        (L = function() {
-            stats.begin();
-            //Move
-            u(gf(p, 'vx'), vx);
-            u(gf(p, 'vy'), vy);
-            vx += speedX;
-            vy += speedY;
-            // Coordinates
-            u(gf(p, 'x'), x);
-            u(gf(p, 'y'), y);
-            // Draw
-            // drawArrays(TRIANGLE_FAN,0,3);
-            dr(TRIANGLE_FAN, 0, 3);
-            // Next frame
-            stats.end();
-            requestAnimationFrame(L);
-        })();
+    );
+    // Compile and attach it to the program
+    gl.compileShader(s);
+    // DEBUGS
+    if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) {
+        gl.getShaderInfoLog(s).trim().split("\n").forEach(ss =>
+            console.warn("[shader] " + ss))
+        throw new Error("Error while compiling shader")
     };
+    gl.attachShader(p, s);
+    // Link and start the program
+    gl.linkProgram(p);
+    gl.useProgram(p);
+    // Define a big triangle the canvas, containing the viewport
+    gl.bindBuffer(g = gl.ARRAY_BUFFER, gl.createBuffer());
+    gl.enableVertexAttribArray(0);
+    gl.vertexAttribPointer(0, 2, gl.BYTE, 0, 0, 0);
+    gl.bufferData(g, new Int8Array([-3, 1, 1, -3, 1, 1]), gl.STATIC_DRAW);
+    // Main loop
+    function loop() {
+        stats.begin();
+        //Move
+        gl.uniform(gl.getUniformLocation(p, 'vx'), vx);
+        gl.uniform(gl.getUniformLocation(p, 'vy'), vy);
+        vx += speedX;
+        vy += speedY;
+        // Coordinates
+        gl.uniform(gl.getUniformLocation(p, 'x'), x);
+        gl.uniform(gl.getUniformLocation(p, 'y'), y);
+        // Draw
+        gl.drawArrays(gl.TRIANGLE_FAN, 0, 3);
+        stats.end();
+        // Next frame
+        requestAnimationFrame(loop);
+    };
+
+    loop();
 
     canvas.onclick = function() {
         x = Math.random() * 1000000;
