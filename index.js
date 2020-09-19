@@ -9,32 +9,22 @@ window.onload = function() {
         h = canvas.height = window.innerHeight;
         gl.viewport(0, 0, w, h);
     }
-
     res();
-
     window.onresize = res;
-
     var stats = new Stats();
     stats.showPanel(0);
     document.body.appendChild(stats.dom);
-
     for (i in gl) {
         gl[i[0] + i[6]] = gl[i];
-    };
-
-    // we use only one uniofrom
+    }
     gl.uniform = gl.uniform1f;
-    // x,y: cords
     vx = 0;
     vy = 0;
     speedX = Math.random() * (1 / 1000) - (1 / 2000);
     speedY = Math.random() * (1 / 1000) - (1 / 2000);
     x = Math.random() * 1000000;
     y = Math.random() * 1000000;
-    // Use the gl context's scope for all the following code
-    // Define a new program
     var p = gl.createProgram();
-    // Basic vertex shader
     gl.shaderSource(s = gl.createShader(gl.VERTEX_SHADER),
         `
         attribute vec2 p;
@@ -43,10 +33,8 @@ window.onload = function() {
         }
         `
     );
-    // Compile and attach it to the program
     gl.compileShader(s);
     gl.attachShader(p, s);
-    // Main program
     gl.shaderSource(s = gl.createShader(gl.FRAGMENT_SHADER),
         `
         precision mediump float;
@@ -84,47 +72,37 @@ window.onload = function() {
         }
         `
     );
-    // Compile and attach it to the program
     gl.compileShader(s);
-    // DEBUGS
     if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) {
         gl.getShaderInfoLog(s).trim().split("\n").forEach(ss =>
             console.warn("[shader] " + ss))
         throw new Error("Error while compiling shader")
-    };
+    }
     gl.attachShader(p, s);
-    // Link and start the program
     gl.linkProgram(p);
     gl.useProgram(p);
-    // Define a big triangle the canvas, containing the viewport
     gl.bindBuffer(g = gl.ARRAY_BUFFER, gl.createBuffer());
     gl.enableVertexAttribArray(0);
     gl.vertexAttribPointer(0, 2, gl.BYTE, 0, 0, 0);
     gl.bufferData(g, new Int8Array([-3, 1, 1, -3, 1, 1]), gl.STATIC_DRAW);
-    // Main loop
+
     function loop() {
         stats.begin();
-        //Move
         gl.uniform(gl.getUniformLocation(p, 'vx'), vx);
         gl.uniform(gl.getUniformLocation(p, 'vy'), vy);
         vx += speedX;
         vy += speedY;
-        // Coordinates
         gl.uniform(gl.getUniformLocation(p, 'x'), x);
         gl.uniform(gl.getUniformLocation(p, 'y'), y);
-        // Draw
         gl.drawArrays(gl.TRIANGLE_FAN, 0, 3);
         stats.end();
-        // Next frame
         requestAnimationFrame(loop);
-    };
-
+    }
     loop();
-
     canvas.onclick = function() {
         x = Math.random() * 1000000;
         y = Math.random() * 1000000;
         speedX = Math.random() * (1 / 1000) - (1 / 2000);
         speedY = Math.random() * (1 / 1000) - (1 / 2000);
-    };
+    }
 }
