@@ -3,6 +3,7 @@ window.onload = function() {
     var w = 0,
         h = 0;
     var gl = canvas.getContext('webgl');
+    var fsBtn = document.querySelector('.fullscreen');
 
     function res() {
         w = canvas.width = window.innerWidth;
@@ -104,5 +105,13 @@ window.onload = function() {
         y = Math.random() * 1000000;
         speedX = Math.random() * (1 / 1000) - (1 / 2000);
         speedY = Math.random() * (1 / 1000) - (1 / 2000);
+    }
+    fsBtn.onclick = function() {
+        fsBtn.classList.toggle('active');
+        if (document.fullscreenElement) {
+            document.exitFullscreen();
+        } else {
+            document.documentElement.requestFullscreen();
+        }
     }
 }

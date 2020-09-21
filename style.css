@@ -9,3 +9,21 @@ canvas {
     top: 0;
     left: 0;
 }
+
+.fullscreen {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-family: 'Comic Sans MS';
+    font-size: 10px;
+    background-color: red;
+    color: white;
+    z-index: 999;
+    cursor: pointer;
+}
+
+.fullscreen.active {
+    background-color: green;
+}
