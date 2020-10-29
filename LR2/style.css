@@ -1,0 +1,158 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+}
+
+body {
+    background-color: #eee;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-size: 20px;
+}
+
+hr {
+    width: 100%;
+    margin: 5px 0;
+    border-width: 2px;
+}
+
+p {
+    font-weight: bold;
+    padding: 10px 0;
+}
+
+
+/*Task 1*/
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/*Task 2*/
+
+.btn {
+    display: block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 2px solid #343434;
+}
+
+.btn:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.btn:active {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+
+/*Task 3*/
+
+.nav-panel {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 400px;
+}
+
+.nav-panel img {
+    width: 100%;
+    height: 80%;
+    object-fit: cover;
+    object-position: center center;
+}
+
+.nav-panel .images {
+    display: flex;
+    height: 20%;
+    width: 100%;
+}
+
+.nav-panel .images img {
+    display: block;
+    height: 100%;
+    width: 20%;
+    object-fit: cover;
+    object-position: center center;
+}
+
+
+/*Task 4*/
+
+.slider {
+    position: relative;
+    width: 500px;
+    height: 400px;
+    border-radius: 10px;
+}
+
+.slides {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.slide {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 1;
+    object-fit: cover;
+    object-position: center center;
+    transition: opacity 0.5s;
+}
+
+.active {
+    opacity: 1;
+    z-index: 2;
+}
+
+.button {
+    position: absolute;
+    top: 0;
+    display: block;
+    width: 10%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    z-index: 2;
+    background-size: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    transition: background-color 100ms;
+}
+
+.button.prev {
+    left: 0;
+    background-image: url(https://cdn0.iconfinder.com/data/icons/navigation-set-arrows-part-one/32/ChevronLeft-512.png);
+}
+
+.button.next {
+    right: 0;
+    background-image: url(https://cdn0.iconfinder.com/data/icons/navigation-set-arrows-part-one/32/ChevronRight-512.png);
+}
+
+.button:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.button:active {
+    background-color: rgba(255, 255, 255, 1);
+}
