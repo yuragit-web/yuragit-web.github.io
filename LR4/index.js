@@ -35,17 +35,16 @@ res.innerHTML = getDOMtree(document);
 //Task 2
 
 let inputName = document.querySelector('#name');
-let inputCount = document.querySelector('#count');
 let inputPrice = document.querySelector('#price');
 let addButton = document.querySelector('#addButton');
 let sumButton = document.querySelector('#sumButton');
 let sumRes = document.querySelector('#sum');
 let table = document.querySelector('#table');
+let cart = document.querySelector('#cart');
 
 addButton.onclick = function(e) {
     if (
         inputName.value != '' &&
-        inputCount.value != '' && +inputCount.value > 0 && Number.isInteger(+inputCount.value) &&
         inputPrice.value != '' && +inputPrice.value >= 0
     ) {
         let li = document.createElement('li');
@@ -54,22 +53,36 @@ addButton.onclick = function(e) {
         name.className = 'name';
         name.innerText = inputName.value;
 
-        let count = document.createElement('div');
-        count.className = 'count';
-        count.innerText = inputCount.value;
-
         let price = document.createElement('div');
         price.className = 'price';
         price.innerText = inputPrice.value;
 
+        let count = document.createElement('div');
+        count.className = 'count';
+        let input = document.createElement('input');
+        input.setAttribute('type', 'number');
+        input.setAttribute('min', '1');
+        input.setAttribute('step', '1');
+        input.setAttribute('value', '1');
+        input.setAttribute('pattern', '\d+');
+        input.setAttribute('name', 'count');
+        input.setAttribute('id', 'count');
+        count.appendChild(input);
+
         let sum = document.createElement('div');
-        sum.className = 'sum';
-        sum.innerText = +inputCount.value * +inputPrice.value;
+        sum.className = 'sumButton';
+        sum.innerText = 'Розрахувати вартість';
+
+        let toCart = document.createElement('div');
+        toCart.className = 'toCart';
+        toCart.innerText = 'В корзину';
+
 
         li.appendChild(name);
-        li.appendChild(count);
         li.appendChild(price);
+        li.appendChild(count);
         li.appendChild(sum);
+        li.appendChild(toCart);
 
         table.appendChild(li);
 
@@ -83,28 +96,41 @@ addButton.onclick = function(e) {
     }
 }
 
-sumButton.onclick = function(e) {
-    if (
-        inputCount.value != '' && +inputCount.value > 0 && Number.isInteger(+inputCount.value) &&
-        inputPrice.value != '' && +inputPrice.value >= 0
-    ) {
-        sumRes.innerText = 'Сума: ' + (+inputCount.value * +inputPrice.value);
-        e.preventDefault();
-    } else {
-        alert('Помилка в заповненні полів');
-        e.preventDefault();
-        return;
-    }
-}
-
 function updateListeners() {
     let list = document.querySelectorAll('#table li:not(:first-child)');
     list.forEach(elm => {
-        elm.ondblclick = function() {
-            let child = elm.children;
-            inputName.value = child[0].innerText;
-            inputCount.value = child[1].innerText;
-            inputPrice.value = child[2].innerText;
+        let child = elm.children;
+        child[3].onclick = () => {
+            child[3].innerText = +child[1].innerText * +child[2].children[0].value;
+        }
+
+        child[4].onclick = (e) => {
+            let li = document.createElement('li');
+
+            let name = document.createElement('div');
+            name.className = 'name';
+            name.innerText = child[0].innerText;
+
+            let count = document.createElement('div');
+            count.className = 'count';
+            count.innerText = child[2].children[0].value;
+
+            let price = document.createElement('div');
+            price.className = 'price';
+            price.innerText = child[1].innerText;
+
+            let sum = document.createElement('div');
+            sum.className = 'sumButton';
+            sum.innerText = +child[2].children[0].value * +child[1].innerText;
+
+            li.appendChild(name);
+            li.appendChild(count);
+            li.appendChild(price);
+            li.appendChild(sum);
+
+            cart.appendChild(li);
+
+            e.preventDefault();
         }
     });
 }

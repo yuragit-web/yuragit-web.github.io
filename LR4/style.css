@@ -47,6 +47,7 @@ ul {
     list-style: none;
     border: 1px solid #000;
     user-select: none;
+    margin: 10px;
 }
 
 ul li {
@@ -70,12 +71,16 @@ ul li:last-child {
 
 ul li div {
     border-right: 1px solid #000;
-    width: 100px;
+    width: 200px;
     height: 40px;
     display: flex;
     text-align: center;
     align-items: center;
     justify-content: center;
+}
+
+ul li input {
+    width: 100px;
 }
 
 ul li div:last-child {
