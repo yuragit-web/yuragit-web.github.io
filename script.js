@@ -63,6 +63,7 @@
         }
     };
     // init Pen
+    let res = false;
     const perlin = new Noise(3);
     const ctx = canvas.init();
     let px = 0;
@@ -90,7 +91,7 @@
                 ctx.beginPath();
                 ctx.moveTo(x, y);
                 const n = perlin.noise(x * zoom, y * zoom);
-                ctx.strokeStyle = `hsl(${(px / (canvas.width/360)) + n * 600}, 100%, ${900 * n * n * n}%)`;
+                ctx.strokeStyle = `hsl(${(px / (canvas.width / 360)) + n * 600}, 100%, ${900 * n * n * n}%)`;
                 for (let m = 0; m < 600 && y >= 0 && y <= canvas.height; m++) {
                     const n = perlin.noise(x * zoom, y * zoom);
                     x += Math.cos(n * 14);
@@ -101,7 +102,7 @@
                 ctx.closePath();
             }
         }
-        window.requestAnimationFrame(run);
+        setTimeout(run, 0);
     }
     run();
 }
