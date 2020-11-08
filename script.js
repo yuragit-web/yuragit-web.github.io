@@ -57,18 +57,25 @@
         init() {
             this.elem = document.createElement('canvas');
             document.body.appendChild(this.elem);
-            this.resize();
+            this.width = this.elem.width = window.innerWidth;
+            this.height = this.elem.height = window.innerHeight;
             return this.elem.getContext('2d');
-        },
-        resize() {
-            this.width = this.elem.width = this.elem.offsetWidth;
-            this.height = this.elem.height = this.elem.offsetHeight;
         }
     };
     // init Pen
     const perlin = new Noise(3);
     const ctx = canvas.init();
     let px = 0;
+    window.onresize = () => {
+        canvas.width = canvas.elem.width = window.innerWidth;
+        canvas.height = canvas.elem.height = window.innerHeight;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#111';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.lineWidth = 1;
+        ctx.globalAlpha = 0.05;
+        px = 0;
+    };
     const zoom = 10 / Math.sqrt(canvas.width ** 2 + canvas.height ** 2);
     ctx.fillStyle = '#111';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -93,11 +100,8 @@
                 ctx.stroke();
                 ctx.closePath();
             }
-        } else {
-            console.log("Success")
-            return;
         }
-        setTimeout(run, 0);
+        window.requestAnimationFrame(run);
     }
     run();
 }
