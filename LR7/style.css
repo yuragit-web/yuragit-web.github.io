@@ -1,0 +1,32 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    padding: 30px;
+    flex-direction: column;
+}
+
+td {
+    padding: 10px;
+    text-align: center;
+}
+
+table {
+    margin: 25px 0;
+    border-collapse: collapse;
+}
+
+img {
+    align-self: center;
+    margin: 25px 0;
+}
+
+button {
+    align-self: center;
+    margin: 25px 0 0;
+    padding: 20px 40px;
+}
