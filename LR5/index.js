@@ -42,7 +42,7 @@ console.log('0322977777', ValidateThePhoneNumberOfLviv('0322977777'));
 //Task 4
 
 function ClearCommentHTML(code) {
-    let re = new RegExp(/<\!--.*?-->/, 'g');
+    let re = new RegExp(/<\!--.*-->/, 'g');
     code = code.replace(re, '');
     return code;
 }
@@ -53,7 +53,7 @@ console.log('<!-- comment --><div></div>', ClearCommentHTML('<!-- comment --> <d
 //Task 5
 
 function ClearHTMLTags(code) {
-    let re = new RegExp(/((<p>.*?<\/p>)|(<font>.*?<\/font>)|(<br>)|(<hr>))/, 'g');
+    let re = new RegExp(/((<p>.*<\/p>)|(<font>.*<\/font>)|(<br>)|(<hr>))/, 'g');
     code = code.replace(re, '');
     return code;
 }
