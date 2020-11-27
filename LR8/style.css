@@ -1,0 +1,55 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    padding: 30px;
+    flex-direction: column;
+}
+
+ul {
+    list-style: none;
+}
+
+.head {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.head div {
+    font-weight: bold;
+}
+
+ul li {
+    display: flex;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+ul li:not(:first-child) {
+    border-top: none;
+}
+
+li div {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+li div:last-child {
+    border: none;
+}
+
+li div button {
+    padding: 5px;
+}
+
+input[type=number] {
+    width: 50%;
+}

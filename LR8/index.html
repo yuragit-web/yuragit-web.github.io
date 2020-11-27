@@ -1,1 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Щерб'юк ПІ-17-01 ЛР №8</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="lab8lib.js"></script>
+</head>
+
+<body>
+    <ul>
+        <li class="head">
+            <div class="col-1">Завдання</div>
+            <div class="col-2">Кнопка</div>
+            <div class="col-3">Результат</div>
+        </li>
+        <li class="elm">
+            <div class="col-1">
+                <strong>Завдання №1.</strong> Написати функцію, яка виводить поточну дату
+            </div>
+            <div class="col-2">
+                <button>Виконати</button>
+            </div>
+            <div class="col-3"></div>
+        </li>
+        <li class="elm">
+            <div class="col-1">
+                <strong>Завдання №2.</strong> Написати функцію, яка приймає об’єкт Date і повертає інформацію про день тижня у вигляді об’єкта
+            </div>
+            <div class="col-2">
+                <button>Виконати</button>
+            </div>
+            <div class="col-3"></div>
+        </li>
+        <li class="elm">
+            <div class="col-1">
+                <strong>Завдання №3.</strong> Знайти дату, яка була N днів назад
+            </div>
+            <div class="col-2">
+                <label for="daysAgo">Введіть кількість днів</label>
+                <input type="number" id="daysAgo" step="1" value="0">
+                <button>Виконати</button>
+            </div>
+            <div class="col-3"></div>
+        </li>
+        <li class="elm">
+            <div class="col-1">
+                <strong>Завдання №4.</strong> Напишіть функцію, яка за заданим роком та номером місяця визначає останній день місяця
+            </div>
+            <div class="col-2">
+                <label for="year">Введіть рік</label>
+                <input type="number" id="year" step="1" value="0" min="0">
+                <label for="month">Введіть номер місяця</label>
+                <input type="number" id="month" step="1" value="1" min="1" max="12">
+                <button>Виконати</button>
+            </div>
+            <div class="col-3"></div>
+        </li>
+        <li class="elm">
+            <div class="col-1">
+                <strong>Завдання №5.</strong> Реалізуйте функцію, яка повертає об’єкт з двома полями: - кількість секунд, яка пройшла від початку сьогоднішнього дня; - кількість секунд до початку наступного дня.
+            </div>
+            <div class="col-2">
+                <button>Виконати</button>
+            </div>
+            <div class="col-3"></div>
+        </li>
+        <li class="elm">
+            <div class="col-1">
+                <strong>Завдання №6.</strong> Реалізуйте виведення заданої дати у вигляді рядка форматі ДД.ММ.РРРР
+            </div>
+            <div class="col-2">
+                <button>Виконати</button>
+            </div>
+            <div class="col-3"></div>
+        </li>
+        <li class="elm">
+            <div class="col-1">
+                <strong>Завдання №7.</strong> Напишіть функцію пошуку різниці між двома датами
+            </div>
+            <div class="col-2">
+                <button>Виконати</button>
+            </div>
+            <div class="col-3"></div>
+        </li>
+        <li class="elm">
+            <div class="col-1">
+                <strong>Завдання №8.</strong> Напишіть функцію formatDate(date), яка форматує дату date так: - якщо з часу date пройшло менше секунди, то повертає рядок "тільки що"; - інакше, якщо з часу date пройшло менше хвилини, то "n сек. назад";
+                - інакше, якщо пройшло менше години, то "m хв. назад"; - інакше, повна дата у форматі "дд.мм.гг чч:мм".
+            </div>
+            <div class="col-2">
+                <button>Виконати</button>
+            </div>
+            <div class="col-3"></div>
+        </li>
+        <li class="elm">
+            <div class="col-1">
+                <strong>Завдання №9.</strong> Напишіть функцію, яка за введеним користувачем рядом формує об’єкт date
+            </div>
+            <div class="col-2">
+                <button>Виконати</button>
+            </div>
+            <div class="col-3"></div>
+        </li>
+        <li class="elm">
+            <div class="col-1">
+                <strong>Завдання №10.</strong> Реалізуйте виведення дати на вказаній мові
+            </div>
+            <div class="col-2">
+                <select>
+                    <option value="uk">uk</option>
+                    <option value="ru">ru</option>
+                    <option value="en">en</option>
+                </select>
+                <button>Виконати</button>
+            </div>
+            <div class="col-3"></div>
+        </li>
+    </ul>
+    <script src="lab8.js"></script>
+</body>
+
+</html>
