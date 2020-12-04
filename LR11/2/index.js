@@ -91,7 +91,7 @@ let cssCodeAlignContent = document.getElementById('align-content');
 
 function setAlignContent(sel) {
     mainBlock1.style.alignContent = sel.value;
-    cssCodeAlignContent.value = `border: 1px solid #000000;\ndisplay: flex;\nflex-wrap: wrap;\nalign-content: ${sel.value};`;
+    cssCodeAlignContent.value = `display: flex;\nflex-wrap: wrap;\nalign-content: ${sel.value};`;
 }
 
 //Task 3
