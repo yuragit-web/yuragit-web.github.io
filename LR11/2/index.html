@@ -1,1 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Щерб'юк ПІ-17-01 ЛР №11</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="tabs">
+        <div class="tab whiteborder">border-radius</div>
+        <div class="tab">align-content</div>
+        <div class="tab">align-items</div>
+        <div class="tabContent">
+            <div>Верхній лівий радіус:
+                <input type="range" id="rtl" min="0" max="100" value="0" oninput="generateByRange()">
+                <input type="number" id="ttl" min="0" max="100" value="0" oninput="generateByText()">
+            </div>
+            <div>Верхній правий радіус:
+                <input type="range" id="rtr" min="0" max="100" value="0" oninput="generateByRange()">
+                <input type="number" id="ttr" min="0" max="100" value="0" oninput="generateByText()">
+            </div>
+            <div>Нижній правий радіус:
+                <input type="range" id="rbr" min="0" max="100" value="0" oninput="generateByRange()">
+                <input type="number" id="tbr" min="0" max="100" value="0" oninput="generateByText()">
+            </div>
+            <div>Нижній лівий радіус:
+                <input type="range" id="rbl" min="0" max="100" value="0" oninput="generateByRange()">
+                <input type="number" id="tbl" min="0" max="100" value="0" oninput="generateByText()">
+            </div>
+            <div id="result">
+                <div id="block"></div>
+                <textarea id="cssCode" cols="37" rows="1">border-radius: 0px 0px 0px 0px;</textarea>
+            </div>
+        </div>
+        <div class="tabContent">
+            <div>align-content:
+                <select onchange="setAlignContent(this)">
+                    <option value="stretch">stretch</option>
+                    <option value="center">center</option>
+                    <option value="flex-start">flex-start</option>
+                    <option value="flex-end">flex-end</option>
+                    <option value="space-between">space-between</option>
+                    <option value="space-around">space-around</option>
+                </select>
+            </div>
+            <div id="mainBlock1">
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+                <div>4</div>
+                <div>5</div>
+                <div>6</div>
+                <div>7</div>
+            </div>
+            <textarea id="align-content" cols="40" rows="4">border: 1px solid #000000;&#10;display: flex;&#10;flex-wrap: wrap;&#10;align-content: stretch;</textarea>
+        </div>
+        <div class="tabContent">
+            <div>align-items:
+                <select onchange="setAlignItems(this)">
+                    <option value="flex-start">flex-start</option>
+                    <option value="flex-end">flex-end</option>
+                    <option value="stretch">stretch</option>
+                    <option value="baseline">baseline</option>
+                    <option value="center">center</option>
+                </select>
+            </div>
+            <div id="mainBlock2">
+                <div>Lorem ipsum dolor, sit amet consectetur</div>
+                <div>Lorem ipsum dolor, sit amet consectetur</div>
+                <div>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Porro corporis</div>
+            </div>
+            <textarea id="align-items" cols="40" rows="2">display: flex;&#10;align-items: flex-start;</textarea>
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>
