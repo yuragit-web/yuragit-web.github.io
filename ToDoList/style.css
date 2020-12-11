@@ -1,0 +1,168 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,800");
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Raleway", sans-serif;
+    font-weight: 800;
+}
+
+body {
+    background: #0072ff;
+}
+
+.main {
+    width: 400px;
+    margin: 50px auto;
+}
+
+
+/* Style the list items */
+
+#toDoList {
+    list-style: none;
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ffffff;
+}
+
+#toDoList .task {
+    cursor: pointer;
+    position: relative;
+    padding: 12px 45px 12px 40px;
+    background: rgba(255, 255, 255, 1);
+    transition: 0.2s;
+    user-select: none;
+    margin-bottom: 10px;
+}
+
+#toDoList .task .text {
+    pointer-events: none;
+    color: #0072ff;
+    font-size: 18px;
+}
+
+#toDoList .task:last-child {
+    margin-bottom: 0;
+}
+
+#toDoList .task:hover {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+#toDoList .task.checked {
+    background: rgba(220, 220, 220, 0.9);
+}
+
+#toDoList .task.checked .text {
+    text-decoration: line-through;
+}
+
+#toDoList .task.checked::before {
+    content: '';
+    position: absolute;
+    border-color: #0072ff;
+    border-style: solid;
+    border-width: 0 2px 2px 0;
+    top: 10px;
+    left: 16px;
+    transform: rotate(45deg);
+    height: 15px;
+    width: 7px;
+}
+
+#toDoList .task .edit {
+    display: block;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #0072ff;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 17px;
+    border-bottom: 1px solid #0072ff;
+    transition: 0.3s;
+}
+
+
+/* Style the close button */
+
+.close {
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 45px;
+    height: 45px;
+}
+
+.close::before {
+    content: '×';
+    font-size: 30px;
+    height: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.close:hover {
+    background-color: #f44336;
+    color: white;
+}
+
+
+/* Style the header */
+
+h2 {
+    margin: 0 0 5px;
+    color: white;
+    text-align: center;
+}
+
+.input {
+    display: flex;
+    border: 1px solid #ffffff;
+}
+
+input {
+    background: #0072ff;
+    color: #ffffff;
+    border: none;
+    outline: none;
+    border-radius: 0;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.addBtn {
+    position: relative;
+    display: flex;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0);
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.addBtn:after {
+    content: "+";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2.5em;
+    font-weight: 800;
+}
+
+.addBtn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}

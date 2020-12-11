@@ -1,1 +1,36 @@
+<!DOCTYPE html>
+<html lang="uk">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="main">
+        <h2>Список завдань</h2>
+        <div class="input">
+            <input type="text" id="inputArea" placeholder="Введіть завдання">
+            <div class="addBtn"></div>
+        </div>
+        <ul id="toDoList">
+            <li class="task" draggable="true">
+                <div class="text">Завдання 1</div>
+                <span class="close"></span>
+            </li>
+            <li class="task" draggable="true">
+                <div class="text">Завдання 2</div>
+                <span class="close"></span>
+            </li>
+            <li class="task" draggable="true">
+                <div class="text">Завдання 3</div>
+                <span class="close"></span>
+            </li>
+        </ul>
+    </div>
+    <script src="script.js "></script>
+</body>
+
+</html>
