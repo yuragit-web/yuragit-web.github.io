@@ -4,11 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Щерб'юк ПІ-17-01 ЛР №10</title>
+    <title>Сапер</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+    <form id="settings">
+        <label for="sizeX">
+            Кількість стовпців: 
+            <input type="number" id="sizeX" min="2" value="10" step="1" required>
+        </label>
+        <label for="sizeY">
+            Кількість рядків:
+            <input type="number" id="sizeY" min="2" value="10" step="1" required>
+        </label>
+        <label for="bombsCount">
+            Кількість бомб:
+            <input type="number" id="bombsCount" min="1" value="10" step="1" required>
+        </label>
+        <button type="submit">Почати гру</button>
+    </form>
+    <div class="board"></div>
+    <div class="btn">Нова гра</div>
+    <div class="endScreen"></div>
     <script src="index.js"></script>
 </body>
 
