@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Neucha&display=swap');
+html,
+body {
+    font-family: 'Neucha';
+    background: #212121;
+    height: 100%;
+}
+
+.container {
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.text {
+    font-weight: 100;
+    font-size: 50px;
+    color: #fafafa;
+}
+
+.dud {
+    color: rgba(250, 250, 250, 0.3);
+}
