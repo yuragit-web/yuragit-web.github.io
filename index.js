@@ -31,7 +31,7 @@ window.onload = function() {
     let seconds = document.querySelector('.seconds');
     let date = document.querySelector('.date');
 
-    let dayParting = new Date(2020, 11, 11, 13, 0, 0, 0);
+    let dayParting = new Date(2020, 11, 25, 23, 0, 0, 0);
 
     date.innerText = dayParting.toLocaleString();
 
