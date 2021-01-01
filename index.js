@@ -23,8 +23,6 @@ window.onload = function() {
 
     //CountUp
 
-    let years = document.querySelector('.years');
-    let months = document.querySelector('.months');
     let days = document.querySelector('.days');
     let hours = document.querySelector('.hours');
     let minutes = document.querySelector('.minutes');
@@ -41,8 +39,6 @@ window.onload = function() {
         minutes.innerText = minuteDiff(dayParting, now) + ' minutes';
         hours.innerText = hoursDiff(dayParting, now) + ' hours';
         days.innerText = dayDiff(dayParting, now) + ' days';
-        months.innerText = monthDiff(dayParting, now) + ' months';
-        years.innerText = yearDiff(dayParting, now) + ' years';
     }, 1000);
 }
 
@@ -60,25 +56,4 @@ function hoursDiff(dateFrom, dateTo) {
 
 function dayDiff(dateFrom, dateTo) {
     return Math.floor((dateTo - dateFrom) / 1000 / 60 / 60 / 24);
-}
-
-function monthDiff(dateFrom, dateTo) {
-    return dateTo.getMonth() - dateFrom.getMonth() + (12 * (dateTo.getFullYear() - dateFrom.getFullYear()))
-}
-
-function yearDiff(dateFrom, dateTo) {
-    let ynew = dateTo.getFullYear();
-    let mnew = dateTo.getMonth();
-    let dnew = dateTo.getDate();
-    let yold = dateFrom.getFullYear();
-    let mold = dateFrom.getMonth();
-    let dold = dateFrom.getDate();
-    let diff = ynew - yold;
-    if (mold > mnew) diff--;
-    else {
-        if (mold == mnew) {
-            if (dold > dnew) diff--;
-        }
-    }
-    return diff;
 }
