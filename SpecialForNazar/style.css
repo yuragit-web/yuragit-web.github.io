@@ -9,6 +9,7 @@
     box-sizing: border-box;
     font-family: 'NEON', sans-serif;
     font-weight: normal;
+    user-select: none;
 }
 
 .countup {
