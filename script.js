@@ -536,7 +536,7 @@ function draw() {
     Bird.V = new Bird.Vtr(0, 0, 5000);
     var birds = [];
     var b = [];
-    for (var i = 0; i < 10; i++) {
+    for (var i = 0; i < 50; i++) {
         _b = b[i] = new Bird.obj();
         _b.pos.x = Math.random() * 800 - 400;
         _b.pos.y = Math.random() * 800 - 400;
